@@ -1,0 +1,5 @@
+#server.contextPath: /api
+
+auth0:
+  issuer: https://vitaljok.eu.auth0.com/
+  apiAudience: security-demo-api

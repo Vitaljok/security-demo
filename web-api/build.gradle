@@ -1,0 +1,42 @@
+buildscript {
+    ext {
+        springBootVersion = '2.0.0.M4'
+    }
+    repositories {
+        mavenCentral()
+        jcenter()
+        maven { url 'http://repo.spring.io/snapshot' }
+        maven { url 'http://repo.spring.io/milestone' }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+
+apply plugin: 'java'
+apply plugin: 'groovy'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    maven { url "http://repo.spring.io/snapshot" }
+    maven { url "http://repo.spring.io/milestone" }
+    jcenter()
+}
+
+dependencies {
+    compile 'org.springframework.boot:spring-boot-starter-web'
+    compile 'org.projectlombok:lombok'
+//    compile 'org.springframework.boot:spring-boot-starter-security'
+    compile 'com.auth0:auth0-spring-security-api:1.0.0-rc.3'
+
+    testCompile 'org.codehaus.groovy:groovy-all'
+    testCompile "org.spockframework:spock-core:1.1-groovy-2.4-rc-3"
+    testCompile 'cglib:cglib-nodep:3.2.5'
+    testCompile 'org.objenesis:objenesis:1.2'
+}
