@@ -1,0 +1,19 @@
+<p>
+  Private page works!
+</p>
+
+<p>
+  Message from API: {{message}}
+</p>
+
+
+<div class="card" style="width: 20rem;">
+  <!--<div class="card-header">-->
+    <!--<h3>Profile</h3>-->
+  <!--</div>-->
+  <img src="{{profile?.picture}}" class="card-img-top" alt="avatar">
+  <div class="card-body">
+    <h3 class="card-title">{{ profile?.nickname }}</h3>
+    <pre class="full-profile">{{ profile | json }}</pre>
+  </div>
+</div>

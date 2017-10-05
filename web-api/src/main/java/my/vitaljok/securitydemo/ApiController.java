@@ -10,10 +10,10 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 @RestController
 public class ApiController {
 
-    @RequestMapping(value = "/login")
+    @RequestMapping(value = "/public")
     @ResponseBody
-    public String login() {
-        return "Login endpoint";
+    public String getPublic() {
+        return "Public message";
     }
 
     @RequestMapping(value = "/user", method = GET)
@@ -26,15 +26,13 @@ public class ApiController {
     @RequestMapping(value = "/admin", method = GET)
     @ResponseBody
     @PreAuthorize("hasAuthority('read:admin')")
-    public String createAdmin() {
+    public String getAdmin() {
         return "Admin message";
     }
 
     @RequestMapping(value = "/**")
     @ResponseBody
-    public String anyRequest() {
-        return "Any message";
+    public String getPrivate() {
+        return "Private message";
     }
-
-
 }
