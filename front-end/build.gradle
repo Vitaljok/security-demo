@@ -1,0 +1,49 @@
+plugins {
+  id "com.moowork.node" version "1.1.1"
+}
+
+apply plugin: 'base'
+
+ext.downloadNode = project.hasProperty('downloadNode')
+
+node {
+  download = downloadNode
+}
+
+task npmBuild(type: NpmTask) {
+  dependsOn npmInstall
+  args = ['run', 'buildProd']
+}
+
+task npmTest(type: NpmTask) {
+  dependsOn npmInstall
+  args = ['run', 'testHeadless']
+}
+
+task distTar(type: Tar) {
+  dependsOn npmBuild
+  from "build/files"
+  baseName = "front-end"
+  extension = "tar.gz"
+  destinationDir = file("./build/dist")
+//  version = "1.0"
+  compression = Compression.GZIP
+}
+
+clean {
+  delete "build"
+}
+
+task cleanAll(type: Delete) {
+  dependsOn clean
+  delete "node_modules"
+  delete ".gradle"
+}
+
+assemble {
+  dependsOn distTar
+}
+
+check {
+  dependsOn npmTest
+}

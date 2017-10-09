@@ -37,6 +37,7 @@ export class ApiService {
   }
 
   handleError(err: any) {
+    console.log(err.message);
     return Observable.throw(err.json && err.json() || err.message || 'Server error');
   }
 
