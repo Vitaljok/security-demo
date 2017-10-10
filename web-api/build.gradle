@@ -37,6 +37,10 @@ dependencies {
 
     testCompile 'org.codehaus.groovy:groovy-all'
     testCompile "org.spockframework:spock-core:1.1-groovy-2.4-rc-3"
+    testCompile("org.spockframework:spock-spring:1.1-groovy-2.4-rc-3")
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+    testCompile("org.springframework.security:spring-security-test")
+
     testCompile 'cglib:cglib-nodep:3.2.5'
     testCompile 'org.objenesis:objenesis:1.2'
 }

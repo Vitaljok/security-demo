@@ -1,9 +1,15 @@
 package my.vitaljok.securitydemo;
 
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.security.Principal;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
@@ -32,7 +38,7 @@ public class ApiController {
 
     @RequestMapping(value = "/**")
     @ResponseBody
-    public String getPrivate() {
-        return "Private message";
+    public String getPrivate(Principal principal) {
+        return "Private message for user "+ principal.getName();
     }
 }
